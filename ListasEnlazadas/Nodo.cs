@@ -1,9 +1,6 @@
-using System.Reflection.Metadata.Ecma335;
-
 namespace Listas;
 
-public class Nodo<T>
-{
+public class Nodo<T>{
     private T valor;
 
     private Nodo<T> siguiente;
@@ -15,13 +12,13 @@ public class Nodo<T>
 
     public T valor
     {
-            get (return this.valor;)
-            set (this.valor = value;)
+            get { return this.valor; }
+            set { this.valor = value; }
     }
 
-    public Nodo<T> siguiente
+    public Nodo<T> Siguiente
     {
-            get (return this.siguiente;)
-            set (this.siguiente = value;)
+            get {return this.siguiente;}
+            set {this.siguiente = value;}
     }
 }
