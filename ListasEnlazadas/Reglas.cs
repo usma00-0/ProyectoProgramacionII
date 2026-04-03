@@ -3,11 +3,12 @@ using System.Security.Cryptography.X509Certificates;
 public class Reglas
 {
     private NodoEstudiante cabeza;
+    private int contadorCodigo = 1; //Para el codigo automatico de estudiantes
 
 //Agrega un nuevo estudiante
-    public void AgregarEstudiante(string nombre, int codigo)
+    public void AgregarEstudiante(string nombre, string apellido, string direccion, string celular, string email)
     {
-        NodoEstudiante nuevo = new NodoEstudiante(nombre, codigo);
+        NodoEstudiante nuevo = new NodoEstudiante(contadorCodigo++, nombre, apellido, direccion, celular, email);
         if (cabeza == null)
         {
             cabeza = nuevo;
@@ -17,6 +18,17 @@ public class Reglas
             NodoEstudiante temp = cabeza;
             while (temp.Siguiente != null) temp = temp.Siguiente;
             temp.Siguiente = nuevo;
+        }
+        Console.WriteLine("Estudiante agregado con exito, con código: " + nuevo.Codigo);
+    }
+
+    public void ListarEstudiantes(){
+        if (cabeza == null){Console.WriteLine("No hay estudiantes registrados"); return;}
+        NodoEstudiante temp = cabeza;
+        while (temp != null)
+        {
+            Console.WriteLine(temp.Codigo + " - " + temp.Nombre + " " + temp.Apellido + " - Email: " + temp.Email);
+            temp = temp.Siguiente;
         }
     }
 
@@ -42,36 +54,42 @@ public class Reglas
             return true;
         }
         NodoEstudiante temp = cabeza;
-        while (temp.Siguiente != null)
+        while (temp.Siguiente != null){
+        if (temp.Siguiente == codigo)
         {
-            if (temp.Siguiente.Codigo == codigo)
-            {
-                temp.Siguiente = temp.Siguiente.Siguiente;
-                return true;
-            }
-            temp = temp.Siguiente;
+            temp.Siguiente = temp.Siguiente.Siguiente;
+            return true;
         }
         return false;
+        }
     }
 
 //Gestion de materias 
     public string AgregarMateriaEstudiante(int codigoEst, string nomMat, double nota)
     {
         NodoEstudiante est = BuscarEstudiante(codigoEst);
-        if (est == null) return "Estudiante no encontrado";
+        if (est == null)
+        {
+            Console.WriteLine("Estudiante no encontrado");
+            return null;
+        }
 
         //Mirar si la materia ya existe
         NodoMateria mTemp = est.CabezaMaterias;
         while (mTemp != null)
         {
-            if (mTemp.Nombre.ToLower() == nomMat.ToLower) return "Materia ya registrada";
+            if (mTemp.Nombre.ToLower() == nomMat.ToLower())
+            {
+                Console.WriteLine("La materia ya existe para este estudiante");
+                return null;
+            }
             mTemp = mTemp.Siguiente;
         }
         //Poner materia
         NodoMateria nuevaMat = new NodoMateria(nomMat, nota);
         nuevaMat.Siguiente = est.CabezaMaterias;
         est.CabezaMaterias = nuevaMat;
-        return "Materia registrada con exito";
+        return "Materia agregada";
     }
 
 //Editar nota 
@@ -81,7 +99,7 @@ public class Reglas
             if (est == null) return false;
             NodoMateria mTemp = est.CabezaMaterias;
             while (mTemp != null)            {
-                if (mTemp.Nombre.ToLower() == nomMat.ToLower)
+                if (mTemp.Nombre.ToLower() == nomMat.ToLower())
                 {
                     mTemp.Nota = nuevaNota;
                     return true;
