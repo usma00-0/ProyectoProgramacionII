@@ -15,15 +15,24 @@ public class NodoMateria
 //Nodo para la lista de estudiantes
 public class NodoEstudiante
 {
-    public string Nombre {get; set;}
     public int Codigo {get; set;}
+    public string Nombre {get; set;}
+    public string Apellido {get; set;}
+    public string Direccion {get; set;}
+    public string Celular {get; set;}
+    public string Email {get; set;}
+
     public NodoEstudiante Siguiente {get; set;}
 
 //Cabeza de la lista de materias del estudiante
     public NodoMateria CabezaMaterias {get; set;}
-    public NodoEstudiante(string nombre, int codigo)
+    public NodoEstudiante(int codigo, string nombre, string apellido, string direccion, string celular, string email)
     {
         Nombre = nombre;
+        Apellido = apellido;
+        Direccion = direccion;
+        Celular = celular;
+        Email = email;
         Codigo = codigo;
         Siguiente = null;
         CabezaMaterias = null;
