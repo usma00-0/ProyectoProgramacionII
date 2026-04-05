@@ -1,0 +1,15 @@
+C:\Users\jausm\OneDrive\Escritorio\Proyecto Programación II\bin\Debug\net10.0\Proyecto Programación II.exe
+C:\Users\jausm\OneDrive\Escritorio\Proyecto Programación II\bin\Debug\net10.0\Proyecto Programación II.deps.json
+C:\Users\jausm\OneDrive\Escritorio\Proyecto Programación II\bin\Debug\net10.0\Proyecto Programación II.runtimeconfig.json
+C:\Users\jausm\OneDrive\Escritorio\Proyecto Programación II\bin\Debug\net10.0\Proyecto Programación II.dll
+C:\Users\jausm\OneDrive\Escritorio\Proyecto Programación II\bin\Debug\net10.0\Proyecto Programación II.pdb
+C:\Users\jausm\OneDrive\Escritorio\Proyecto Programación II\obj\Debug\net10.0\Proyecto Programación II.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jausm\OneDrive\Escritorio\Proyecto Programación II\obj\Debug\net10.0\Proyecto Programación II.AssemblyInfoInputs.cache
+C:\Users\jausm\OneDrive\Escritorio\Proyecto Programación II\obj\Debug\net10.0\Proyecto Programación II.AssemblyInfo.cs
+C:\Users\jausm\OneDrive\Escritorio\Proyecto Programación II\obj\Debug\net10.0\Proyecto Programación II.csproj.CoreCompileInputs.cache
+C:\Users\jausm\OneDrive\Escritorio\Proyecto Programación II\obj\Debug\net10.0\Proyecto Programación II.sourcelink.json
+C:\Users\jausm\OneDrive\Escritorio\Proyecto Programación II\obj\Debug\net10.0\Proyecto Programación II.dll
+C:\Users\jausm\OneDrive\Escritorio\Proyecto Programación II\obj\Debug\net10.0\refint\Proyecto Programación II.dll
+C:\Users\jausm\OneDrive\Escritorio\Proyecto Programación II\obj\Debug\net10.0\Proyecto Programación II.pdb
+C:\Users\jausm\OneDrive\Escritorio\Proyecto Programación II\obj\Debug\net10.0\Proyecto Programación II.genruntimeconfig.cache
+C:\Users\jausm\OneDrive\Escritorio\Proyecto Programación II\obj\Debug\net10.0\ref\Proyecto Programación II.dll

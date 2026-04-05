@@ -21,23 +21,23 @@ class FuncionesSwitch
             switch (opcion)
             {
                 case 1:
-                MenuRegistrarEstudiante();
-                break;
+                    MenuRegistrarEstudiante();
+                    break;
                 case 2:
-                reglas.ListarEstudiantes();
-                Pausa();
-                break;
+                    reglas.ListarEstudiantes();
+                    Pausa();
+                    break;
                 case 3:
-                MenuBuscarEstudiante();
-                break;
+                    MenuBuscarEstudiante();
+                    break;
                 case 4:
-                MenuEliminarEstudiante();
-                break;
+                    MenuEliminarEstudiante();
+                    break;
                 case 5:
-                MenuGestionMaterias();
-                break;
+                    MenuGestionarMaterias();
+                    break;
             }
-            
+
         } while (opcion != 6);
     }
 
@@ -64,7 +64,7 @@ class FuncionesSwitch
     {
         Console.WriteLine("BUSCAR ESTUDIANTE");
         Console.Write("Codigo: ");
-        if (!int.TryParse(Console.ReadLine(), out int codigo))
+        if (int.TryParse(Console.ReadLine(), out int codigo))
         {
             var estudiante = reglas.BuscarEstudiante(codigo);
             if (estudiante != null)
@@ -82,9 +82,9 @@ class FuncionesSwitch
     static void MenuEliminarEstudiante()
     {
         Console.Write("Codigo a eliminar: ");
-        if(int.TryParse(Console.ReadLine(), out int codigo))
+        if (int.TryParse(Console.ReadLine(), out int codigo))
         {
-            if (sistema.EliminarEstudiante(codigo))
+            if (reglas.EliminarEstudiante(codigo))
             {
                 Console.WriteLine("Estudiante eliminado");
             }
@@ -99,10 +99,10 @@ class FuncionesSwitch
     static void MenuGestionarMaterias()
     {
         Console.Write("Ingrese codigo del estudiante: ");
-        if(!int.TryParse(Console.ReadLine(), out int codigo)) return;
+        if (!int.TryParse(Console.ReadLine(), out int codigo)) return;
 
-        NodoEstudianre estudiante = reglas.BuscarEstudiante(codigo);
-        if(estudiante == null)
+        NodoEstudiante estudiante = reglas.BuscarEstudiante(codigo);
+        if (estudiante == null)
         {
             Console.WriteLine("Estudiante no encontrado");
             Pausa();
@@ -124,53 +124,60 @@ class FuncionesSwitch
             switch (opcionMateria)
             {
                 case 1:
-                Console.Write("Materia: ");
-                string nomMat = Console.ReadLine();
-                Console.Write("Nota: ");
-                double nt = double.Parse(Console.ReadLine());
-                Console.WriteLine(SocketsHttpPlaintextStreamFilterContext.AgregarMateriaEstudiante(codigo, nomMat, nt));
-                Pausa();
-                break;
+                    Console.Write("Materia: ");
+                    string nomMat = Console.ReadLine();
+                    Console.Write("Nota: ");
+                    double nt = double.Parse(Console.ReadLine());
+                    Console.WriteLine(reglas.AgregarMateriaEstudiante(codigo, nomMat, nt));
+                    Pausa();
+                    break;
                 case 2:
-                ListarMaterias(estudiante);
-                Pausa();
-                break;
+                    ListarMaterias(estudiante);
+                    Pausa();
+                    break;
                 case 3:
-                Console.Write("Nombre materia: ");
-                string nomMatEdit = Console.ReadLine();
-                Console.Write("Nueva nota: ");
-                double nuevaNota = double.Parse(Console.ReadLine());
-                if(reglas.EditarNota(codigo, nomMatEdit, nuevaNota))
-                {
-                    Console.WriteLine("Nota actualizada");
-                }
-                else
-                {
-                    Console.WriteLine("Materia no encontrada");
-                }
-                Pausa();
-                break;
+                    Console.Write("Nombre materia: ");
+                    string nomMatEdit = Console.ReadLine();
+                    Console.Write("Nueva nota: ");
+                    double nuevaNota = 0;
+                    if (!double.TryParse(Console.ReadLine(), out nuevaNota))
+                    {
+                        Console.WriteLine("Nota invalida");
+                    }
+                    else
+                    {
+                        if (reglas.EditarNota(codigo, nomMatEdit, nuevaNota))
+                        {
+                            Console.WriteLine("Nota actualizada");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Materia no encontrada");
+                        }
+                    }
+                    Pausa();
+                    break;
                 case 4:
-                Console.Write("Nombre materia para borrar: ");
-                string nomMatElim = Console.ReadLine();
-                if(reglas.EliminarMateria(codigo, nomMatElim))
-                {
-                    Console.WriteLine("Materia eliminada");
-                }
-                else
-                {
-                    Console.WriteLine("Materia no encontrada");
-                }
-                Pausa();
-                break;
+                    Console.Write("Nombre materia para borrar: ");
+                    string nomMatElim = Console.ReadLine();
+                    if (reglas.EliminarMateria(codigo, nomMatElim))
+                    {
+                        Console.WriteLine("Materia eliminada");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Materia no encontrada");
+                    }
+                    Pausa();
+                    break;
             }
-        }while (opcionMateria != 5);
+        } while (opcionMateria != 5);
     }
 
     static void ListarMaterias(NodoEstudiante estudiante)
     {
         NodoMateria temp = estudiante.CabezaMaterias;
-        if (mTemp == null)
+        if (temp == null)
         {
             Console.WriteLine("No hay materias registradas para este estudiante");
             return;
